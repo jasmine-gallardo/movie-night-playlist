@@ -39,9 +39,20 @@
                 <ul class="section">
                   <li class="row">
                     <h6 class="col s5 offset-s3">Sweet Home Alabama</h6>
-                    <a href="#!">
+                    <a class="dropdown-trigger" href="#" data-target="dropdown">
                       <i class="col s4 fas fa-ellipsis-h"></i>
                     </a>
+                    <ul id="dropdown" class="dropdown-content">
+                      <li>
+                        <a href="#!">Remove from list</a>
+                      </li>
+                      <li>
+                        <a href="#!">Add to list</a>
+                      </li>
+                      <li>
+                        <a href="#!">Edit name</a>
+                      </li>
+                    </ul>
                   </li>
                   <li class="divider col s6 offset-s3" tabindex="-1"></li>
                   <li class="row">
@@ -87,10 +98,17 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
         var elems = document.querySelectorAll('.collapsible');
-        var options = {
-
-        }
+        var options = null;
         var instances = M.Collapsible.init(elems, options);
+      });
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.dropdown-trigger');
+        var options = {
+          'constrainWidth': false,
+          'coverTrigger': false,
+          'hover': true
+      }
+        var instances = M.Dropdown.init(elems, options);
       });
   </script>
 </body>
