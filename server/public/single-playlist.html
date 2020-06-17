@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Romantic Comedies</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+    integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <nav>
+    <div class="nav-wrapper row">
+      <div class="col s11 offset-s1 valign-wrapper">
+        <i class="fas fa-film"></i>
+        <a href="wireframe.html" class="col s6 m6 l8">
+          Movie Night
+        </a>
+        <ul id="nav-mobile" class="right col s5 offset-s1 m4 offset-m2 l3 offset-l1">
+          <li><a href="wireframe.html">Playlists</a></li>
+          <li><a href="user.html"><i class="fas fa-user"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row section">
+      <h6 class="col s12 center">Playlist</h6>
+      <div class="col s12 row">
+        <h3 class="col s12 center">Romantic Comedies</h3>
+      </div>
+      <div class="col s12">
+        <ul class="collapsible popout">
+          <li class="">
+            <div class="col push-s6 collapsible-header">
+              <i class=" fas fa-chevron-down"></i>
+            </div>
+            <div class="collapsible-body">
+              <div class="section">
+                <ul class="section">
+                  <li>
+                    <h6>Sweet Home Alabama</h6>
+                    <a href="#!">
+                      <i class=" fas fa-ellipsis-h"></i>
+                    </a>
+                  </li>
+                  <li class="divider" tabindex="-1"></li>
+                  <li>
+                    <h6>My Best Friend's Wedding</h6>
+                    <a href="#!">
+                      <i class="fas fa-ellipsis-h"></i>
+                    </a>
+                  </li>
+                  <li class="divider" tabindex="-1"></li>
+                  <li>
+                    <h6>The Family Stone</h6>
+                    <a href="#!">
+                      <i class="fas fa-ellipsis-h"></i>
+                    </a>
+                  </li>
+                  <li class="divider" tabindex="-1"></li>
+                  <li>
+                    <h6>The Holiday</h6>
+                    <a href="#!">
+                      <i class="fas fa-ellipsis-h"></i>
+                    </a>
+                  </li>
+                  <li class="divider" tabindex="-1"></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- <script src="main.js"></script> -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.collapsible');
+        var options = {
+
+        }
+        var instances = M.Collapsible.init(elems, options);
+      });
+  </script>
+</body>
+</html>
