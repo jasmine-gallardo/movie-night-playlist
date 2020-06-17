@@ -1,3 +1,7 @@
 .fas {
   line-height: 2.4;
 }
+
+.collapsible-header {
+  border-bottom: 0;
+}
