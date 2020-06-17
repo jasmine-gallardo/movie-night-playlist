@@ -26,17 +26,65 @@
   </nav>
   <div class="container">
     <div class="row section">
-      <h6 class="col s12 offset-s3">Playlist</h6>
-      <div class="col s12 row valign-wrapper">
+      <h6 class="col s12 center">Playlist</h6>
+      <div class="col s12 row">
         <h3 class="col s12 center">Romantic Comedies</h3>
-        <a class="col pull-s3 dropdown-trigger btn" data-target="dropdown" href="#">
-          <i class=" fas fa-chevron-down center"></i>
-        </a>
       </div>
-
+      <div class="col s12">
+        <ul class="collapsible popout">
+          <li class="">
+            <div class="col push-s6 collapsible-header">
+              <i class=" fas fa-chevron-down"></i>
+            </div>
+            <div class="collapsible-body">
+              <div class="section">
+                <ul class="section">
+                  <li>
+                    <h6>Sweet Home Alabama</h6>
+                    <a href="#!">
+                      <i class=" fas fa-ellipsis-h"></i>
+                    </a>
+                  </li>
+                  <li class="divider" tabindex="-1"></li>
+                  <li>
+                    <h6>My Best Friend's Wedding</h6>
+                    <a href="#!">
+                      <i class="fas fa-ellipsis-h"></i>
+                    </a>
+                  </li>
+                  <li class="divider" tabindex="-1"></li>
+                  <li>
+                    <h6>The Family Stone</h6>
+                    <a href="#!">
+                      <i class="fas fa-ellipsis-h"></i>
+                    </a>
+                  </li>
+                  <li class="divider" tabindex="-1"></li>
+                  <li>
+                    <h6>The Holiday</h6>
+                    <a href="#!">
+                      <i class="fas fa-ellipsis-h"></i>
+                    </a>
+                  </li>
+                  <li class="divider" tabindex="-1"></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="/main.js"></script>
+  <!-- <script src="main.js"></script> -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.collapsible');
+        var options = {
+
+        }
+        var instances = M.Collapsible.init(elems, options);
+      });
+  </script>
 </body>
 </html>
