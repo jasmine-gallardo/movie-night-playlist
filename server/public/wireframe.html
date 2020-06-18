@@ -41,9 +41,20 @@
           </div>
           <div class="card-action center">
             <a href="single-playlist.html">Go to Playlist</a>
-            <a href="">
+            <a href="#" class="dropdown-trigger" data-target="dropdown1">
               <i class="fas fa-ellipsis-h"></i>
             </a>
+            <ul id="dropdown1" class="dropdown-content">
+              <li>
+                <a href="#!">Add a movie</a>
+              </li>
+              <li>
+                <a href="#!">Delete playlist</a>
+              </li>
+              <li>
+                <a href="#!">Rename</a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -54,9 +65,20 @@
           </div>
           <div class="card-action center">
             <a href="">Go to Playlist</a>
-            <a href="">
+            <a href="#" class="dropdown-trigger" data-target="dropdown1">
               <i class="fas fa-ellipsis-h"></i>
             </a>
+            <ul id="dropdown1" class="dropdown-content">
+              <li>
+                <a href="#!">Add a movie</a>
+              </li>
+              <li>
+                <a href="#!">Delete playlist</a>
+              </li>
+              <li>
+                <a href="#!">Rename</a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -67,9 +89,20 @@
           </div>
           <div class="card-action center">
             <a href="">Go to Playlist</a>
-            <a href="">
+            <a href="#" class="dropdown-trigger" data-target="dropdown1">
               <i class="fas fa-ellipsis-h"></i>
             </a>
+            <ul id="dropdown1" class="dropdown-content">
+              <li>
+                <a href="#!">Add a movie</a>
+              </li>
+              <li>
+                <a href="#!">Delete playlist</a>
+              </li>
+              <li>
+                <a href="#!">Rename</a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -82,9 +115,20 @@
           </div>
           <div class="card-action center">
             <a href="">Go to Playlist</a>
-            <a href="">
+            <a href="#" class="dropdown-trigger" data-target="dropdown1">
               <i class="fas fa-ellipsis-h"></i>
             </a>
+            <ul id="dropdown1" class="dropdown-content">
+              <li>
+                <a href="#!">Add a movie</a>
+              </li>
+              <li>
+                <a href="#!">Delete playlist</a>
+              </li>
+              <li>
+                <a href="#!">Rename</a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -95,9 +139,20 @@
           </div>
           <div class="card-action center">
             <a href="">Go to Playlist</a>
-            <a href="">
+            <a href="#" class="dropdown-trigger" data-target="dropdown1">
               <i class="fas fa-ellipsis-h"></i>
             </a>
+            <ul id="dropdown1" class="dropdown-content">
+              <li>
+                <a href="#!">Add a movie</a>
+              </li>
+              <li>
+                <a href="#!">Delete playlist</a>
+              </li>
+              <li>
+                <a href="#!">Rename</a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -108,16 +163,37 @@
           </div>
           <div class="card-action center">
             <a href="">Go to Playlist</a>
-            <a href="">
+            <a href="#" class="dropdown-trigger" data-target="dropdown1">
               <i class="fas fa-ellipsis-h"></i>
             </a>
+            <ul id="dropdown1" class="dropdown-content">
+              <li>
+                <a href="#!">Add a movie</a>
+              </li>
+              <li>
+                <a href="#!">Delete playlist</a>
+              </li>
+              <li>
+                <a href="#!">Rename</a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="/main.js"></script>
+  <!-- <script src="/main.js"></script> -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.dropdown-trigger');
+        var options = {
+          'constrainWidth': false,
+          'coverTrigger': false
+        }
+        var instances = M.Dropdown.init(elems, options);
+      });
+  </script>
 </body>
 
 </html>
