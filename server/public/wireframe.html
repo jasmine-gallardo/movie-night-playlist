@@ -31,7 +31,15 @@
   <div class="container section">
     <div class="row section">
       <h4 class="col section">Your Playlists</h4>
-      <a href="" class="btn-floating btn-small teal"><i class="fas fa-plus"></i></a>
+      <a href="#modal1" class="btn-floating btn-small teal modal-trigger"><i class="fas fa-plus"></i></a>
+      <div id="modal1" class="modal">
+        <div class="modal-content">
+          <h6>Create a movie playlist</h6>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-close btn">Add</a>
+        </div>
+      </div>
     </div>
     <div class="row">
       <div class="col s12 m4">
@@ -192,6 +200,11 @@
           'coverTrigger': false
         }
         var instances = M.Dropdown.init(elems, options);
+      });
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.modal');
+        var options = null;
+        var instances = M.Modal.init(elems, options);
       });
   </script>
 </body>
