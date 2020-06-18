@@ -1,10 +1,11 @@
 import React from 'react';
+import PlaylistCard from './playlist-card';
 
 export default class UserPlaylists extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      playlists: []
+      playlists: [{ name: 'Romantic Comedies', playlistId: 1 }, { name: 'Sci-Fi', playlistId: 2 }, { name: 'Moms Playlist', playlistId: 3 }, { name: 'Halloween', playlistId: 4 }, { name: 'Kids', playlistId: 5 }, { name: 'Bruce Willis', playlistId: 6 }]
     };
   }
 
@@ -30,8 +31,17 @@ export default class UserPlaylists extends React.Component {
             </div>
           </div>
         </div>
+        <div className="row">
+          {this.state.playlists.map(playlist => {
+            return (
+              <PlaylistCard
+                key={playlist.playlistId}
+                playlistName={playlist.name}
+              />
+            );
+          })}
+        </div>
       </div>
     );
   }
-
 }
