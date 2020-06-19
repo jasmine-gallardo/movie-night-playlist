@@ -9,6 +9,17 @@ export default class UserPlaylists extends React.Component {
     };
   }
 
+  // componentDidMount(){
+  //   this.getUserPlaylists();
+  // }
+
+  getUserPlaylists(){
+    fetch('/api/users_playlists')
+      .then(res => res.json())
+      .then(playlistsResult => this.setState({ playlists: playlistsResult }))
+      .catch(console.error(err));
+  }
+
   render() {
     return (
       <div className="container section">
