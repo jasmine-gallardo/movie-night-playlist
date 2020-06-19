@@ -149,8 +149,8 @@ CREATE TABLE public.users (
 --
 
 CREATE TABLE public.users_playlists (
-    "playlistId" integer NOT NULL,
-    "userId" integer NOT NULL
+    "userId" integer NOT NULL,
+    "playlistId" integer NOT NULL
 );
 
 
@@ -248,7 +248,7 @@ COPY public.users ("userId", name) FROM stdin;
 -- Data for Name: users_playlists; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.users_playlists ("playlistId", "userId") FROM stdin;
+COPY public.users_playlists ("userId", "playlistId") FROM stdin;
 3	1
 3	2
 3	3
@@ -313,3 +313,4 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 --
 -- PostgreSQL database dump complete
 --
+
