@@ -8,7 +8,7 @@ export default function PlaylistCard(props) {
           <h5 className="truncate">{props.playlistName}</h5>
         </div>
         <div className="card-action center">
-          <a href="single-playlist.html">Go to Playlist</a>
+          <a href="">Go to Playlist</a>
           <a href="#" className="dropdown-trigger" data-target="dropdown1">
             <i className="fas fa-ellipsis-h"></i>
           </a>
