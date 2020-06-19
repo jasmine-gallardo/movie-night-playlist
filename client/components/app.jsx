@@ -39,7 +39,7 @@ export default class App extends React.Component {
           </div>
         </nav>
         <div>
-          <UserPlaylists />
+          <UserPlaylists userId={this.state.user}/>
         </div>
       </div>
     );
