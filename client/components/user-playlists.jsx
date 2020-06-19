@@ -5,19 +5,21 @@ export default class UserPlaylists extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      playlists: [{ name: 'Romantic Comedies', playlistId: 1 }, { name: 'Sci-Fi', playlistId: 2 }, { name: 'Moms Playlist', playlistId: 3 }, { name: 'Halloween', playlistId: 4 }, { name: 'Kids', playlistId: 5 }, { name: 'Bruce Willis', playlistId: 6 }]
+      playlists: []
     };
+    this.getUserPlaylists = this.getUserPlaylists.bind(this);
   }
 
-  // componentDidMount(){
-  //   this.getUserPlaylists();
-  // }
+  componentDidMount() {
+    this.getUserPlaylists();
+  }
 
   getUserPlaylists() {
-    fetch('/api/users_playlists')
+    const userId = this.props.userId;
+    fetch(`/api/users_playlists/${userId}`)
       .then(res => res.json())
       .then(playlistsResult => this.setState({ playlists: playlistsResult }))
-      .catch(console.error(err));
+      .catch(err => console.error(err));
   }
 
   render() {
@@ -43,14 +45,16 @@ export default class UserPlaylists extends React.Component {
           </div>
         </div>
         <div className="row">
-          {this.state.playlists.map(playlist => {
-            return (
-              <PlaylistCard
-                key={playlist.playlistId}
-                playlistName={playlist.name}
-              />
-            );
-          })}
+          {
+            this.state.playlists.map(playlist => {
+              return (
+                <PlaylistCard
+                  key={playlist.playlistId}
+                  playlistName={playlist.name}
+                />
+              );
+            })
+          }
         </div>
       </div>
     );
