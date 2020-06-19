@@ -5,7 +5,7 @@ export default function PlaylistCard(props) {
     <div className="col s12 m4">
       <div className="card">
         <div className="card-content center">
-          <h5>{props.playlistName}</h5>
+          <h5 className="truncate">{props.playlistName}</h5>
         </div>
         <div className="card-action center">
           <a href="single-playlist.html">Go to Playlist</a>
