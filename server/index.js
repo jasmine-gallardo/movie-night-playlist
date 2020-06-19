@@ -30,6 +30,29 @@ app.get('/api/users', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.get('/api/users_playlists/:userId', (req, res, next) => {
+  const userId = req.params.userId;
+  const sql = `
+    select "playlists"."playlistId",
+      "playlists"."name",
+      "users_playlists"."userId"
+      from "playlists"
+      join "users_playlists" using("playlistId")
+    where "users_playlists"."userId" = $1
+  `;
+  const values = [userId];
+  db.query(sql, values)
+    .then(result => {
+      if (result.rows.length === 0) {
+        return (
+          next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404))
+        );
+      }
+      return res.status(200).json(result.rows);
+    })
+    .catch(err => next(err));
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
