@@ -13,7 +13,7 @@ export default class UserPlaylists extends React.Component {
   //   this.getUserPlaylists();
   // }
 
-  getUserPlaylists(){
+  getUserPlaylists() {
     fetch('/api/users_playlists')
       .then(res => res.json())
       .then(playlistsResult => this.setState({ playlists: playlistsResult }))
