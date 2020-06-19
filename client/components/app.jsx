@@ -5,16 +5,20 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: 'playlists'
+      view: 'playlists',
+      user: null
     };
   }
 
   componentDidMount() {
-    fetch('/api/health-check')
+    this.getUser();
+  }
+
+  getUser() {
+    fetch('/api/users')
       .then(res => res.json())
-      .then(data => this.setState({ message: data.message || data.error }))
-      .catch(err => this.setState({ message: err.message }))
-      .finally(() => this.setState({ isLoading: false }));
+      .then(userResult => this.setState({ user: userResult }))
+      .catch(err => console.error(err));
   }
 
   render() {
