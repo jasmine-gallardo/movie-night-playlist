@@ -6,20 +6,20 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       view: 'playlists',
-      user: null
+      user: 3
     };
   }
 
-  componentDidMount() {
-    this.getUser();
-  }
+  // componentDidMount() {
+  //   this.getUser();
+  // }
 
-  getUser() {
-    fetch('/api/users')
-      .then(res => res.json())
-      .then(userResult => this.setState({ user: userResult }))
-      .catch(err => console.error(err));
-  }
+  // getUser() {
+  //   fetch('/api/users')
+  //     .then(res => res.json())
+  //     .then(userResult => this.setState({ user: userResult }))
+  //     .catch(err => console.error(err));
+  // }
 
   render() {
     return (
