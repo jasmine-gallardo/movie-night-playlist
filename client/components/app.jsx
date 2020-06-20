@@ -1,5 +1,6 @@
 import React from 'react';
 import UserPlaylists from './user-playlists';
+import M from 'materialize-css';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -10,9 +11,9 @@ export default class App extends React.Component {
     };
   }
 
-  // componentDidMount() {
-  //   this.getUser();
-  // }
+  componentDidMount() {
+    // this.getUser();
+  }
 
   // getUser() {
   //   fetch('/api/users')
