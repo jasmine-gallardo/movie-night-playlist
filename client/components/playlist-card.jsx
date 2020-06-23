@@ -9,7 +9,7 @@ export default function PlaylistCard(props) {
           <h5 className="truncate">{props.playlistName}</h5>
         </div>
         <div className="card-action center">
-          <a href="">Go to Playlist</a>
+          <button className="btn-flat" onClick={() => props.setView('single-playlist')}>Go to Playlist</button>
           <Dropdown dropdownId={props.dropdownId}/>
         </div>
       </div>
