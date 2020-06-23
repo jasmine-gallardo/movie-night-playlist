@@ -1,6 +1,7 @@
 import React from 'react';
 import UserPlaylists from './user-playlists';
 import M from 'materialize-css';
+import SinglePlaylist from './single-playlist';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -9,6 +10,7 @@ export default class App extends React.Component {
       view: 'playlists',
       user: 3
     };
+    this.setView = this.setView.bind(this);
   }
 
   componentDidMount() {
@@ -19,6 +21,10 @@ export default class App extends React.Component {
     // this.getUser();
   }
 
+  setView(view) {
+    this.setState({ view });
+  }
+
   // getUser() {
   //   fetch('/api/users')
   //     .then(res => res.json())
@@ -27,6 +33,15 @@ export default class App extends React.Component {
   // }
 
   render() {
+    let view;
+    switch (this.state.view) {
+      case 'playlists': view =
+        <UserPlaylists userId={this.state.user} setView={this.setView} />;
+        break;
+      case 'single-playlist': view =
+        <SinglePlaylist/>;
+    }
+
     return (
       <div>
         <nav>
@@ -44,7 +59,7 @@ export default class App extends React.Component {
           </div>
         </nav>
         <div>
-          <UserPlaylists userId={this.state.user}/>
+          {view}
         </div>
       </div>
     );
