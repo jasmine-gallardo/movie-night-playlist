@@ -9,9 +9,11 @@ export default () => (
       coverTrigger: false
     }}
 
-    trigger={<a href="#" node="button" className="dropdown-trigger" data-target="dropdown1">
+    trigger={
+    <a node="a" class="dropdown-trigger">
       <i className="fas fa-ellipsis-h"></i>
-    </a>}
+    </a>
+    }
   >
     <a href="#!">Add a movie</a>
     <a href="#!">Delete playlist</a>
