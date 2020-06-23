@@ -16,14 +16,17 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
-ALTER TABLE ONLY public."playlists_Movies" DROP CONSTRAINT "playlists_Movies_fk1";
-ALTER TABLE ONLY public."playlists_Movies" DROP CONSTRAINT "playlists_Movies_fk0";
+ALTER TABLE ONLY public.users DROP CONSTRAINT users_pk;
 ALTER TABLE ONLY public.playlists DROP CONSTRAINT playlists_pk;
 ALTER TABLE ONLY public.movies DROP CONSTRAINT movies_pk;
+ALTER TABLE public.users ALTER COLUMN "userId" DROP DEFAULT;
 ALTER TABLE public.playlists ALTER COLUMN "playlistId" DROP DEFAULT;
 ALTER TABLE public.movies ALTER COLUMN "movieId" DROP DEFAULT;
+DROP SEQUENCE public."users_userId_seq";
+DROP TABLE public.users_playlists;
+DROP TABLE public.users;
 DROP SEQUENCE public."playlists_playlistId_seq";
-DROP TABLE public."playlists_Movies";
+DROP TABLE public.playlists_movies;
 DROP TABLE public.playlists;
 DROP SEQUENCE public."movies_movieId_seq";
 DROP TABLE public.movies;
@@ -102,10 +105,10 @@ CREATE TABLE public.playlists (
 
 
 --
--- Name: playlists_Movies; Type: TABLE; Schema: public; Owner: -
+-- Name: playlists_movies; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public."playlists_Movies" (
+CREATE TABLE public.playlists_movies (
     "playlistId" integer NOT NULL,
     "movieId" integer NOT NULL
 );
@@ -132,6 +135,46 @@ ALTER SEQUENCE public."playlists_playlistId_seq" OWNED BY public.playlists."play
 
 
 --
+-- Name: users; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.users (
+    "userId" integer NOT NULL,
+    name text NOT NULL
+);
+
+
+--
+-- Name: users_playlists; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.users_playlists (
+    "userId" integer NOT NULL,
+    "playlistId" integer NOT NULL
+);
+
+
+--
+-- Name: users_userId_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public."users_userId_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: users_userId_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public."users_userId_seq" OWNED BY public.users."userId";
+
+
+--
 -- Name: movies movieId; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -146,6 +189,13 @@ ALTER TABLE ONLY public.playlists ALTER COLUMN "playlistId" SET DEFAULT nextval(
 
 
 --
+-- Name: users userId; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.users ALTER COLUMN "userId" SET DEFAULT nextval('public."users_userId_seq"'::regclass);
+
+
+--
 -- Data for Name: movies; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -153,6 +203,7 @@ COPY public.movies ("movieId", name) FROM stdin;
 1	Sweet Home Alabama
 2	My Best Friends Wedding
 3	The Family Stone
+4	The Holiday
 \.
 
 
@@ -161,14 +212,49 @@ COPY public.movies ("movieId", name) FROM stdin;
 --
 
 COPY public.playlists ("playlistId", name) FROM stdin;
+1	Romantic Comedies
+2	Sci-Fi
+3	Moms Playlist
+4	Halloween
+5	Kids
+6	Bruce Willis
 \.
 
 
 --
--- Data for Name: playlists_Movies; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: playlists_movies; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public."playlists_Movies" ("playlistId", "movieId") FROM stdin;
+COPY public.playlists_movies ("playlistId", "movieId") FROM stdin;
+1	1
+1	2
+1	3
+1	4
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.users ("userId", name) FROM stdin;
+1	Riki
+2	Lisa
+3	Jasmine
+\.
+
+
+--
+-- Data for Name: users_playlists; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.users_playlists ("userId", "playlistId") FROM stdin;
+3	1
+3	2
+3	3
+3	4
+3	5
+3	6
 \.
 
 
@@ -176,7 +262,7 @@ COPY public."playlists_Movies" ("playlistId", "movieId") FROM stdin;
 -- Name: movies_movieId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."movies_movieId_seq"', 3, true);
+SELECT pg_catalog.setval('public."movies_movieId_seq"', 1, false);
 
 
 --
@@ -184,6 +270,13 @@ SELECT pg_catalog.setval('public."movies_movieId_seq"', 3, true);
 --
 
 SELECT pg_catalog.setval('public."playlists_playlistId_seq"', 1, false);
+
+
+--
+-- Name: users_userId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public."users_userId_seq"', 1, false);
 
 
 --
@@ -203,19 +296,11 @@ ALTER TABLE ONLY public.playlists
 
 
 --
--- Name: playlists_Movies playlists_Movies_fk0; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: users users_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public."playlists_Movies"
-    ADD CONSTRAINT "playlists_Movies_fk0" FOREIGN KEY ("playlistId") REFERENCES public.playlists("playlistId");
-
-
---
--- Name: playlists_Movies playlists_Movies_fk1; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public."playlists_Movies"
-    ADD CONSTRAINT "playlists_Movies_fk1" FOREIGN KEY ("movieId") REFERENCES public.movies("movieId");
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pk PRIMARY KEY ("userId");
 
 
 --
