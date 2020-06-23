@@ -10,9 +10,9 @@ export default () => (
     }}
 
     trigger={
-    <a node="a" class="dropdown-trigger">
-      <i className="fas fa-ellipsis-h"></i>
-    </a>
+      <a node="a" className="dropdown-trigger">
+        <i className="fas fa-ellipsis-h"></i>
+      </a>
     }
   >
     <a href="#!">Add a movie</a>
