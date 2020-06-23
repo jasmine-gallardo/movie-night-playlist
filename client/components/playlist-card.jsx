@@ -10,7 +10,7 @@ export default function PlaylistCard(props) {
         </div>
         <div className="card-action center">
           <a href="">Go to Playlist</a>
-          <Dropdown/>
+          <Dropdown dropdownId={props.dropdownId}/>
         </div>
       </div>
     </div>
