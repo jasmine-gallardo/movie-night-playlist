@@ -7,7 +7,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: 'playlists',
+      view: { name: 'playlists', params: null },
       user: 3
     };
     this.setView = this.setView.bind(this);
@@ -21,8 +21,8 @@ export default class App extends React.Component {
     // this.getUser();
   }
 
-  setView(view) {
-    this.setState({ view });
+  setView(name, params) {
+    this.setState({ view: { name, params } });
   }
 
   // getUser() {
@@ -34,12 +34,12 @@ export default class App extends React.Component {
 
   render() {
     let view;
-    switch (this.state.view) {
+    switch (this.state.view.name) {
       case 'playlists': view =
         <UserPlaylists userId={this.state.user} setView={this.setView} />;
         break;
       case 'single-playlist': view =
-        <SinglePlaylist/>;
+        <SinglePlaylist playlistId={this.state.view.params}/>;
     }
 
     return (
