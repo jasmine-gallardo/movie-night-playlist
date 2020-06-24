@@ -34,7 +34,7 @@ export default props => (
         </li>
         <li className="divider col s6 offset-s3" tabIndex="-1"></li>
         <li className="row">
-          <h6 className="col s5 offset-s3">My Best Friend`&apos;`s Wedding</h6>
+          <h6 className="col s5 offset-s3">My Best Friend&apos;s Wedding</h6>
           <a className="dropdown-trigger" href="#" data-target="dropdown">
             <i className="col fas fa-ellipsis-h"></i>
           </a>
