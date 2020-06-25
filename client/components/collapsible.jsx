@@ -1,13 +1,13 @@
 import React from 'react';
 import { Collapsible, CollapsibleItem } from 'react-materialize';
 
-export default props => (
+export default (props) => (
   <Collapsible popout>
     <CollapsibleItem
       expanded={false}
       header={
         <div className="col s12">
-          <h3 className="col s9 push-s2 collapsible-header">Romantic Comedies
+          <h3 className="col s9 push-s2 collapsible-header">{props.playlistName}
             <i className="col fas fa-chevron-down"></i>
           </h3>
         </div>
