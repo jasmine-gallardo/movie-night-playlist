@@ -19,7 +19,7 @@ export default class SinglePlaylist extends React.Component {
     fetch(`/api/playlists_movies/${playlistId}`)
       .then(res => res.json())
       .then(moviesArray => this.setState({ movies: moviesArray }))
-      .catch(err => console.err(err));
+      .catch(err => console.error(err));
   }
 
   render() {
