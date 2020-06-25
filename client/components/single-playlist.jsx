@@ -7,6 +7,19 @@ export default class SinglePlaylist extends React.Component {
     this.state = {
       movies: []
     };
+    this.getMovies = this.getMovies.bind(this);
+  }
+
+  componentDidMount() {
+    this.getMovies();
+  }
+
+  getMovies() {
+    const playlistId = this.props.playlistId;
+    fetch(`/api/playlists_movies/${playlistId}`)
+      .then(res => res.json())
+      .then(moviesArray => this.setState({ movies: moviesArray }))
+      .catch(err => console.err(err));
   }
 
   render() {
@@ -14,7 +27,7 @@ export default class SinglePlaylist extends React.Component {
       <div className="container">
         <div className="row section">
           <div className="col s12 row">
-            <Collapsible playlistName={this.props.playlistName}/>
+            <Collapsible playlistName={this.props.playlistName} moviesArray={this.state.movies}/>
           </div>
         </div>
         <div className="row col s12">
