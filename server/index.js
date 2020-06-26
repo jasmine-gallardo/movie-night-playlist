@@ -55,11 +55,9 @@ app.get('/api/users_playlists/:userId', (req, res, next) => {
 app.get('/api/playlists_movies/:playlistId', (req, res, next) => {
   const playlistId = req.params.playlistId;
   const sql = `
-    select "playlists_movies"."playlistId",
-      "movies"."name",
-      "movies"."movieId"
-      from "playlists_movies"
-      join "movies" using("movieId")
+    select "movies"."name"
+      from "movies"
+      join "playlists_movies" using("movieId")
     where "playlists_movies"."playlistId" = $1
   `;
   const values = [playlistId];
