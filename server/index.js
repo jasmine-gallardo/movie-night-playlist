@@ -52,6 +52,26 @@ app.get('/api/users_playlists/:userId', (req, res, next) => {
     })
     .catch(err => next(err));
 });
+app.get('/api/playlists_movies/:playlistId', (req, res, next) => {
+  const playlistId = req.params.playlistId;
+  const sql = `
+    select "movies"."name"
+      from "movies"
+      join "playlists_movies" using("movieId")
+    where "playlists_movies"."playlistId" = $1
+  `;
+  const values = [playlistId];
+  db.query(sql, values)
+    .then(result => {
+      if (result.rows.length === 0) {
+        return (
+          next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404))
+        );
+      }
+      return res.status(200).json(result.rows);
+    })
+    .catch(err => next(err));
+});
 
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
