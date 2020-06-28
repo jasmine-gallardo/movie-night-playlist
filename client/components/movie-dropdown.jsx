@@ -15,8 +15,8 @@ export default props => (
       </a>
     }
   >
-    <a href="#!">Add a movie</a>
-    <a href="#!">Delete playlist</a>
-    <a href="#!">Rename</a>
+    <a href="#!">Remove from list</a>
+    <a href="#!">Add to list</a>
+    <a href="#!">Edit name</a>
   </Dropdown >
 );

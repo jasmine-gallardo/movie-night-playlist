@@ -6,7 +6,8 @@ export default class SinglePlaylist extends React.Component {
     super(props);
     this.state = {
       movies: [],
-      randomizedMovies: []
+      randomizedMovies: [],
+      moviesArray: []
     };
     this.getMovies = this.getMovies.bind(this);
     this.shuffleMovies = this.shuffleMovies.bind(this);
@@ -24,7 +25,8 @@ export default class SinglePlaylist extends React.Component {
         const movieNames = moviesArray.map(movie => movie.name);
         this.setState({
           movies: movieNames,
-          randomizedMovies: movieNames
+          randomizedMovies: movieNames,
+          moviesArray
         });
       })
       .catch(err => console.error(err));
@@ -47,7 +49,7 @@ export default class SinglePlaylist extends React.Component {
       <div className="container">
         <div className="row section">
           <div className="col s12 row">
-            <Collapsible playlistName={this.props.playlistName} moviesArray={this.state.movies}/>
+            <Collapsible playlistName={this.props.playlistName} moviesArray={this.state.moviesArray}/>
           </div>
         </div>
         <div className="row col s12">

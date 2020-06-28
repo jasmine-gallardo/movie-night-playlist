@@ -50,7 +50,6 @@ export default class UserPlaylists extends React.Component {
               return (
                 <PlaylistCard
                   key={playlist.playlistId}
-                  dropdownId={`${playlist.playlistId}`}
                   playlistId={playlist.playlistId}
                   playlistName={playlist.name}
                   setView={this.props.setView}
