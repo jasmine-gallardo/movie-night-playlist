@@ -52,10 +52,12 @@ app.get('/api/users_playlists/:userId', (req, res, next) => {
     })
     .catch(err => next(err));
 });
+
 app.get('/api/playlists_movies/:playlistId', (req, res, next) => {
   const playlistId = req.params.playlistId;
   const sql = `
-    select "movies"."name"
+    select "movies"."name",
+      "movies"."movieId"
       from "movies"
       join "playlists_movies" using("movieId")
     where "playlists_movies"."playlistId" = $1
