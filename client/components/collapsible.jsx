@@ -1,5 +1,6 @@
 import React from 'react';
 import { Collapsible, CollapsibleItem } from 'react-materialize';
+import SingleMovie from './single-movie';
 
 export default (props) => (
   <Collapsible popout>
@@ -15,78 +16,13 @@ export default (props) => (
       node="div"
     >
       <ul className="section">
-        <li className="row">
-          <h6 className="col s5 offset-s3">Sweet Home Alabama</h6>
-          <a className="dropdown-trigger" href="#" data-target="dropdown">
-            <i className="col fas fa-ellipsis-h"></i>
-          </a>
-          <ul id="dropdown" className="dropdown-content">
-            <li>
-              <a href="#!">Remove from list</a>
-            </li>
-            <li>
-              <a href="#!">Add to list</a>
-            </li>
-            <li>
-              <a href="#!">Edit name</a>
-            </li>
-          </ul>
-        </li>
-        <li className="divider col s6 offset-s3" tabIndex="-1"></li>
-        <li className="row">
-          <h6 className="col s5 offset-s3">My Best Friend&apos;s Wedding</h6>
-          <a className="dropdown-trigger" href="#" data-target="dropdown">
-            <i className="col fas fa-ellipsis-h"></i>
-          </a>
-          <ul id="dropdown" className="dropdown-content">
-            <li>
-              <a href="#!">Remove from list</a>
-            </li>
-            <li>
-              <a href="#!">Add to list</a>
-            </li>
-            <li>
-              <a href="#!">Edit name</a>
-            </li>
-          </ul>
-        </li>
-        <li className="divider col s6 offset-s3" tabIndex="-1"></li>
-        <li className="row">
-          <h6 className="col s5 offset-s3">The Family Stone</h6>
-          <a className="dropdown-trigger" href="#" data-target="dropdown">
-            <i className="col fas fa-ellipsis-h"></i>
-          </a>
-          <ul id="dropdown" className="dropdown-content">
-            <li>
-              <a href="#!">Remove from list</a>
-            </li>
-            <li>
-              <a href="#!">Add to list</a>
-            </li>
-            <li>
-              <a href="#!">Edit name</a>
-            </li>
-          </ul>
-        </li>
-        <li className="divider col s6 offset-s3" tabIndex="-1"></li>
-        <li className="row">
-          <h6 className="col s5 offset-s3">The Holiday</h6>
-          <a className="dropdown-trigger" href="#" data-target="dropdown">
-            <i className="col fas fa-ellipsis-h"></i>
-          </a>
-          <ul id="dropdown" className="dropdown-content">
-            <li>
-              <a href="#!">Remove from list</a>
-            </li>
-            <li>
-              <a href="#!">Add to list</a>
-            </li>
-            <li>
-              <a href="#!">Edit name</a>
-            </li>
-          </ul>
-        </li>
-        <li className="divider col s6 offset-s3" tabIndex="-1"></li>
+      {props.moviesArray.map(movie => {
+        return(
+          <SingleMovie key={movie.movieId} movieName={movie.name}/>
+        );
+      })
+
+      }
       </ul>
     </CollapsibleItem>
   </Collapsible>
