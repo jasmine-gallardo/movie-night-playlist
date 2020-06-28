@@ -1,9 +1,9 @@
 import React from 'react';
 import { Dropdown } from 'react-materialize';
 
-export default (props) => (
+export default props => (
   < Dropdown
-    id={props.dropdownId}
+    id={`${props.dropdownId}`}
     options={{
       constrainWidth: false,
       coverTrigger: false
