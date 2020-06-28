@@ -12,7 +12,7 @@ export default function PlaylistCard(props) {
         </div>
         <div className="card-action center">
           <button className="btn-flat" onClick={() => props.setView('single-playlist', playlistId, playlistName)}>Go to Playlist</button>
-          <Dropdown dropdownId={props.dropdownId}/>
+          <Dropdown dropdownId={props.playlistId}/>
         </div>
       </div>
     </div>
