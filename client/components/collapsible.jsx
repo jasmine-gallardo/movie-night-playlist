@@ -18,7 +18,7 @@ export default props => (
       <ul className="section">
         {props.moviesArray.map(movie => {
           return (
-            <SingleMovie key={movie.movieId} movieName={movie.name}/>
+            <SingleMovie key={movie.movieId} dropdownId={movie.movieId} movieName={movie.name}/>
           );
         })}
       </ul>
