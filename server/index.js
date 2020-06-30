@@ -77,7 +77,6 @@ app.get('/api/playlists_movies/:playlistId', (req, res, next) => {
 
 app.post('/api/movies/', (req, res, next) => {
   const movieName = req.body.movieName;
-  const playlistId = req.body.playlistId;
   const sql = `
     insert into "movies" ("name")
     values ($1)
@@ -88,6 +87,19 @@ app.post('/api/movies/', (req, res, next) => {
     .then(result => {
       const movieId = result.rows[0].movieId;
       return (movieId);
+    })
+    .then(result => {
+      const movieId = result;
+      const playlistId = req.body.playlistId;
+      const sql = `
+        insert into "playlists_movies" ("playlistId", "movieId")
+        values ($1, $2)
+      `;
+      const values = [playlistId, movieId];
+      return (
+        db.query(sql, values)
+          .then(result => res.status(201).json([playlistId, movieId, movieName]))
+      );
     })
     .catch(err => next(err));
 });
