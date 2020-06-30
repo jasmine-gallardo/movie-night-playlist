@@ -75,6 +75,23 @@ app.get('/api/playlists_movies/:playlistId', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.post('/api/movies/', (req, res, next) => {
+  const movieName = req.body.movieName;
+  const playlistId = req.body.playlistId;
+  const sql = `
+    insert into "movies" ("name")
+    values ($1)
+    returning "movieId"
+  `;
+  const values = [movieName];
+  db.query(sql, values)
+    .then(result => {
+      const movieId = result.rows[0].movieId;
+      return (movieId);
+    })
+    .catch(err => next(err));
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
