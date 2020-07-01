@@ -75,6 +75,55 @@ app.get('/api/playlists_movies/:playlistId', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.post('/api/movies/', (req, res, next) => {
+  const movieName = req.body.movieName;
+  const sql = `
+    insert into "movies" ("name")
+    values ($1)
+    returning "movieId"
+  `;
+  const values = [movieName];
+  db.query(sql, values)
+    .then(result => {
+      const movieId = result.rows[0].movieId;
+      return (movieId);
+    })
+    .then(result => {
+      const movieId = result;
+      const playlistId = req.body.playlistId;
+      const sql = `
+        insert into "playlists_movies" ("playlistId", "movieId")
+        values ($1, $2)
+        returning "movieId"
+      `;
+      const values = [playlistId, movieId];
+      return (
+        db.query(sql, values)
+          .then(result => {
+            const resultMovieId = result.rows[0];
+            return (resultMovieId);
+          })
+      );
+    })
+    .then(result => {
+      const movieId = result.movieId;
+      const sql = `
+        select "movies"."name",
+          "playlists_movies"."playlistId",
+          "playlists_movies"."movieId"
+        from "movies"
+        join "playlists_movies" using ("movieId")
+        where "movies"."movieId" = $1
+      `;
+      const values = [movieId];
+      return (
+        db.query(sql, values)
+          .then(result => res.status(201).json(result.rows[0]))
+      );
+    })
+    .catch(err => next(err));
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
